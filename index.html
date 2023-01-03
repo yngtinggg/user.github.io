@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>Belle Photography</title>
+    <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+    .mySlides {
+        display: none;
+    }
+    .mySlides img {
+        vertical-align: middle;
+        height: 640px;
+        object-fit: cover;
+        object-position: 50% 50%;
+    }
+    .slideshow-container {
+        padding-top: 80px;
+        position: relative;
+        margin: 0;
+        background-color: #262626;
+        width: 100%;
+    }
+    /* Next & previous buttons */
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 100px;
+        width: auto;
+        padding: 309px 20px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    /* Caption text */
+    .text {
+        color: #ffffff;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+    /* The dots/bullets/indicators */
+    .dot {
+        cursor: pointer;
+        height: 12px;
+        width: 12px;
+        margin: 0 2px;
+        background-color: #999999;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+    .active,
+    .dot:hover {
+        background-color: #111111;
+    }
+    /* Fading animation */
+    .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+    @-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+    }
+    @keyframes fade {
+    from {
+        opacity: .4
+    }
+    to {
+        opacity: 1
+    }
+    }
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+    .prev,
+    .next,
+    .text {
+        font-size: 11px
+    }
+    }
+    .content {
+        display: flex;
+        margin: 140px auto;
+        padding-top: 40px;
+        width: 100%;
+        position: relative;
+        height: 550px;
+    }
+    .single-box {
+        width: 30%;
+        height: 520px;
+        background: #fff;
+        margin-right: 8%;
+        padding: 25px;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .single-box:last-child {
+        margin-right: 0;
+    }
+    .img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        position: relative;
+        top: -20%;
+        height: 140px;
+    }
+    .single-box h3 {
+        margin-top: 20%;
+        margin-bottom: 15px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 24px;
+        position: relative;
+        top: -20%;
+    }
+    .single-box p {
+        line-height: 1.9;
+        padding: 2%;
+        position: relative;
+        top: -20%;
+    }
+    .single-box a {
+        /* background: #c17d2f; */
+        background-color: #1dbfbf;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 50px;
+        padding: 10px 20px;
+        display: inline-block;
+        margin-top: 30px;
+        font-size: 12px;
+        position: relative;
+        top: -20%;
+    }
+    .single-box a:hover {
+        /* background-color: #b9905b; */
+        background-color: #9fe1e1;
+        color: black;
+    }
+    .testimonial-title {
+        text-align: center;
+    }
+    hr {
+        background-color: #b9975b;
+        height: 2px;
+        /* width: 50%; */
+    }
+    .testimonial-slider {
+        display: block;
+        width: 100%;
+        height: auto;
+        padding: 100px 0;
+        margin: 50px auto;
+        background: url(img/snow.gif);
+        border: dotted 5px #fff;
+        border-radius: 50px;
+    }
+    .testimonial-slider ul.slider {
+        display: block;
+        list-style: none;
+        padding: 0;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        height: 150px;
+        /* overflow: hidden; */
+        margin: 0 auto;
+    }
+    .testimonial-slider ul.slider li {
+        position: absolute;
+        display: block;
+        width: 90%;
+        padding-left: 10%;
+        opacity: 0;
+        margin: 0 auto;
+        text-align: center;
+        top: 15%;
+    }
+    .testimonial-slider ul.slider li:nth-child(1) {
+        opacity: 1;
+
+        -webkit-animation: fade-animation-1 25s infinite;
+                animation: fade-animation-1 25s infinite;
+    }
+    .testimonial-slider ul.slider li:nth-child(2) {
+        -webkit-animation: fade-animation-2 25s infinite;
+                animation: fade-animation-2 25s infinite;
+    }
+    .testimonial-slider ul.slider li:nth-child(3) {
+        -webkit-animation: fade-animation-3 25s infinite;
+                animation: fade-animation-3 25s infinite;
+    }
+    .testimonial-slider ul.slider li:nth-child(4) {
+        -webkit-animation: fade-animation-4 25s infinite;
+                animation: fade-animation-4 25s infinite;
+    }
+    .testimonial-slider q {
+        display: inline-block;
+        color: #f0f4ff;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-weight: 600;
+        font-size: 24px;
+        letter-spacing: .5pt;
+        text-shadow: 0 5px 10px rgba(0,0,0,.1);
+    }
+    .testimonial-slider .source {
+        margin-top: 25px;
+        color: #d9e0f9;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        font-style: italic;
+    }
+    /* KEYFRAME DECLARATIONS */
+    @keyframes fade-animation-1 {
+        0%, 25%, 100% {
+            opacity:0
+        }
+        3%, 22% {
+            opacity: 1;
+        }
+    }
+    @keyframes fade-animation-2 {
+        0%, 25%, 50%, 100% {
+            opacity:0
+        }
+        28%, 47% {
+            opacity: 1;
+        }
+    }
+    @keyframes fade-animation-3 {
+        0%, 50%, 75%, 100% {
+            opacity:0
+        }
+        53%, 72% {
+            opacity: 1;
+        }
+    }
+    @keyframes fade-animation-4 {
+        0%, 75%, 100% {
+            opacity:0
+        }
+        78%, 97% {
+            opacity: 1;
+        }
+    }
+    @-webkit-keyframes fade-animation-1 {
+        0%, 25%, 100% {
+            opacity:0
+        }
+        3%, 22% {
+            opacity: 1;
+        }
+    }
+    @-webkit-keyframes fade-animation-2 {
+        0%, 25%, 50%, 100% {
+            opacity:0
+        }
+        28%, 47% {
+            opacity: 1;
+        }
+    }
+    @-webkit-keyframes fade-animation-3 {
+        0%, 50%, 75%, 100% {
+            opacity:0
+        }
+        53%, 72% {
+            opacity: 1;
+        }
+    }
+    @-webkit-keyframes fade-animation-4 {
+        0%, 75%, 100% {
+            opacity:0
+        }
+        78%, 97% {
+            opacity: 1;
+        }
+    }
+
+    .flex {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px 0 100px;
+    }
+    .pastwork {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        /* padding: 20px 0 100px; */
+    }
+    .pastwork img {
+        width: auto;
+        height: 400px;
+        min-width: 0;
+        margin: 10px;
+        border-radius: 30px;
+        transition: all 0.3s linear;
+        cursor: pointer;
+        object-fit: cover;
+    }
+    .pastwork img:hover {
+        transform: scale(0.9);
+    }
+    .video {
+        text-align: center;
+        margin-bottom: 100px;
+    }
+    .video video {
+        width: 90%;
+        height: auto;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="img/bellelogo.png" alt="Belle Photography"></a>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="img/newborn2.jpg" alt="Newborn Baby" style="width:100%">
+            <div class="text">Newborn Baby</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="img/family6.jpg" alt="Family" style="width:100%;">
+            <div class="text">Family Portrait</div>
+            </div>
+        <div class="mySlides fade">
+            <img src="img/graduates1.jpg" alt="Graduate" style="width:100%">
+            <div class="text">Graduates</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="img/diorwatch.jpg" alt="Commercial" style="width:100%">
+            <div class="text">Commercial</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="img/weddingnight.jpg" alt="Wedding" style="width:100%">
+            <div class="text">Wedding</div>
+        </div>
+        <div class="mySlides fade">
+            <img src="img/pw-sunflower.jpg" alt="Pre-wedding" style="width:100%">
+            <div class="text">Pre-wedding</div>
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+    <script src="slideshow.js"></script>
+    <div class="wrapper">
+        <main>
+            <div class="content">
+                <div class="single-box">
+                    <img alt="Question Mark" src="img/questionmark.gif" class="img" style="width: 120px;">
+                    <h3>Why Us?</h3>
+                    <p>Belle Photography provide professional photography session. We help clients to create amazing stories and memories in the form of 
+                        photographs. Belle Photography is a team of passionate photographers that cater the need for services in the field of photography.</p>
+                    <a href="about.html">More About Us</a>
+                </div>
+                <div class="single-box">
+                    <img alt="Light Bulb" src="img/lightbulb.gif" class="img" style="width: 140px;">
+                    <h3>Experienced</h3>
+                    <p>Our humble team has been in the creative industry for a little more than 10 years. We can overcome all your creative needs in 
+                        photography section.</p>
+                    <a href="about.html">More About Us</a>
+                </div>
+                <div class="single-box">
+                    <img alt="Camera" src="img/cameraflash.gif" class="img" style="width: 160px;">
+                    <h3>Capture Your Precious Moment</h3>
+                    <p>Our style of photography is very much focused on informality and spontaneity to capture the spirit of love and fun.</p>
+                    <a href="about.html">More About Us</a>
+                </div>
+            </div>
+            <hr>
+            <h2 style="text-align: center;">OUR PAST WORKS</h2>
+            <hr>
+            <div class="flex">
+                <div class="pastwork">
+                    <img src="img/weddingdinner.jpg" alt="Wedding">
+                    <img src="img/pw-sun.jpeg" alt="Pre-wedding">
+                </div>
+                <div class="pastwork">
+                    <img src="img/product3.jpg" alt="Commercial">
+                    <img src="img/family4.jpeg" alt="Family">
+                    <img src="img/graduate.jpeg" alt="Graduate">
+                </div>
+            </div>
+            <div class="video">
+                <video src="img/weddingday.mp4" controls muted></video>
+            </div>
+            <div class="testimonial-title">
+                <hr>
+                <h3>Photography</h3>
+                <h2>SLOGANS AND TAGLINES</h2>
+                <hr>
+            </div>
+            <div class="testimonial-slider">
+                <ul class="slider">
+                    <li>
+                        <div class="testimonial-slider-content">
+                            <q>When I have a camera in my hand,I know no fear.</q>
+                            <p class="source">- Alfred Eisenstaedt</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="testimonial-slider-content">
+                            <q>Photography is my one recretion and I think it should be done well.</q>
+                            <p class="source">- Lewis Carroll</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="testimonial-slider-content">
+                            <q>A good snapshot keeps a moment from running away.</q>
+                            <p class="source">- Eudora Welty</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="testimonial-slider-content">
+                            <q>My love of photography is melded with the ability to capture what I want to remember in the moment I want to never forget.</q>
+                            <p class="source">-  Devin Dygert</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="footer-left">
+                <img src="img/bellelogo.png" alt="Logo">
+            </div>
+            <ul class="footer-right">
+                <li>
+                    <h2>Quick Link</h2>
+    
+                    <ul class="box">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h2>Connect With Us</h2>
+    
+                    <ul class="socials">
+                        <li><a href="https://www.facebook.com/bellephtography"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="https://www.instagram.com/bellestudio18"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                        <li><a href="https://www.whatsapp.com"><i class="fa-brands fa-whatsapp"></i> Whatsapp</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h2>Contact</h2>
+    
+                    <ul class="box">
+                        <li><i class="fa-sharp fa-solid fa-location-dot"></i>No.8, Jalan Huat Arh 888,</li>
+                        <li class="address">Taman Fat Chai,</li>
+                        <li class="address">Subang, Selangor. </li>
+                        <li><i class="fa-sharp fa-solid fa-envelope"></i> <a href="mailto:info@bellephtography.com.my"> info@bellephtography.com.my</a></li>
+                        <li><i class="fa-sharp fa-solid fa-phone"></i> <a href="tel:+6018-8888888">+6018-888 8888</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="footer-bottom">
+                <p>Copyright &copy; Belle Photography 2022</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
